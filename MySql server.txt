@@ -1,0 +1,79 @@
+Instalacja MySql server
+
+skrypty do uruchomienia:
+
+1) stworzenie u¿ytkownika
+robert + has³o
+CREATE USER 'robert'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+GRANT ALL PRIVILEGES ON * . * TO 'robert'@'localhost';
+
+2) utworzenie bazy z tabel¹
+CREATE DATABASE IF NOT EXISTS `JAVAHibernate`;
+USE `JAVAHibernate`;
+DROP TABLE IF EXISTS `pracownicy`;
+CREATE TABLE `pracownicy` (
+	`id_pracownik` int not null auto_increment,
+    `imie` varchar(40) default null,
+    `nazwisko` varchar(40) default null,
+    `pensja` int default 0,
+    primary key (`id_pracownik`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET= utf8mb4;
+
+-----------------------------------
+plik hibernate.cfg.xml  w resources
+-----------------------------------
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/javahibernate?serverTimezone=UTC</property>
+        <property name="connection.username">uzytkownik</property>
+        <property name="connection.password">uzytkownik</property>
+
+        <property name="connection.pool_size">1</property>
+        <property name="show_sql">true</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="current_session_context_class">thread</property>
+
+    </session-factory>
+
+</hibernate-configuration>
+
+-----------------------------------
+plik pom.xml  w resources
+-----------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>www.robertburek</groupId>
+    <artifactId>HibernateProjekt1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.3.6.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.12</version>
+        </dependency>
+    </dependencies>
+
+</project>
+
+
+
+
+
