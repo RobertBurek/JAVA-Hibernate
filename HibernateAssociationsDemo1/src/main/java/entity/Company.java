@@ -32,4 +32,10 @@ public class Company {
     @Column(name = "value")
     private Integer value;
 
+    @Getter
+    @Setter
+    @OneToOne
+    @JoinColumn(name = "id_company_detail")
+    private CompanyDetail companyDetail;
+
 }

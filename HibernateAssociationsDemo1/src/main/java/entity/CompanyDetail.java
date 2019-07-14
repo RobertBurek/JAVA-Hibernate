@@ -29,7 +29,7 @@ public class CompanyDetail {
 
     @Getter
     @Setter
-    @Column(name = "employeeNumber")
+    @Column(name = "employee_Number")
     private Integer employeeNumber;
 
 }
