@@ -34,7 +34,7 @@ public class Company {
 
     @Getter
     @Setter
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_company_detail")
     private CompanyDetail companyDetail;
 
