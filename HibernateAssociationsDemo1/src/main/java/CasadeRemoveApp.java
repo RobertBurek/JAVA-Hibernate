@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 /**
  * Created by Robert Burek
  */
-public class CascadeApp {
+public class CasadeRemoveApp {
 
     public static void main(String[] args) {
 
@@ -21,22 +21,14 @@ public class CascadeApp {
         SessionFactory factory = conf.buildSessionFactory();
         Session session = factory.getCurrentSession();
 
-        //Tworzenie obiektów encji
-        Company company = new Company();
-        company.setName("KGHM3");
-        company.setValue(3);
-        CompanyDetail companyDetail = new CompanyDetail();
-        companyDetail.setResidence("Poland3");
-        companyDetail.setEmployeeNumber(33);
-        company.setCompanyDetail(companyDetail);
-
-
         //otwarcie sesji/transakcji
         session.beginTransaction();
 
-        //zapisanie encji do tabel w bazie
-        session.persist(company);
-//        session.save(companyDetail);
+        //pobranie danych o danym id
+        Company company = session.get(Company.class, 15);
+
+        //usuwanie obiektu z bazy
+        session.remove(company);
 
 
         //zakończenie sesji/transakcji
