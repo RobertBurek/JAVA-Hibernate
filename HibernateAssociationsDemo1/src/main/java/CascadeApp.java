@@ -23,11 +23,11 @@ public class CascadeApp {
 
         //Tworzenie obiektów encji
         Company company = new Company();
-        company.setName("KGHM3");
-        company.setValue(3);
+        company.setName("PKNOrlen");
+        company.setValue(30000000);
         CompanyDetail companyDetail = new CompanyDetail();
-        companyDetail.setResidence("Poland3");
-        companyDetail.setEmployeeNumber(33);
+        companyDetail.setResidence("Poland");
+        companyDetail.setEmployeeNumber(3000);
         company.setCompanyDetail(companyDetail);
 
 

@@ -7,8 +7,7 @@ import org.hibernate.cfg.Configuration;
 /**
  * Created by Robert Burek
  */
-public class CasadeRemoveApp {
-
+public class CasadeRefreshApp {
     public static void main(String[] args) {
 
         //Komfiguracja i encje
@@ -25,16 +24,20 @@ public class CasadeRemoveApp {
         session.beginTransaction();
 
         //pobranie danych o danym id
-        Company company = session.get(Company.class, 13);
+        Company company = session.get(Company.class, 7);
+        System.out.println("CompanyDetail przed zmianami: " + company.getCompanyDetail());
+        CompanyDetail companyDetail = session.get(CompanyDetail.class, 6);
+        companyDetail.setResidence("Canada");
+        session.save(companyDetail);
+        System.out.println("CompanyDetail po zmianie: "+session.get(CompanyDetail.class,6));
 
-        //usuwanie obiektu z bazy
-        session.remove(company);
-
+        //odświeżyliśmy bazę poprzez pobraną encję Company i przywróciliśmy w ten sposób ustawienia w niej zapisane
+        // dot. CompanyDetail
+        session.refresh(company);
+        System.out.println("Po odświeżeniu: " + company.getCompanyDetail());
 
         //zakończenie sesji/transakcji
         session.getTransaction().commit();
-
-        //wyświetlanie pobranej listy w zależności od ilości pobranych danych
 
 
         //zamknięcie obiektu SessionFactory
