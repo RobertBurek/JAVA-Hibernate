@@ -61,6 +61,7 @@ public class Company {
     @Getter
     @Setter
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="id_company")
     private Set<Department> departments;
 
     public Company(String name, Integer value) {
