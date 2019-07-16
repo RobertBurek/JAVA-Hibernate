@@ -1,8 +1,13 @@
 package entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Robert Burek
@@ -39,4 +44,23 @@ public class Company {
     @JoinColumn(name = "id_company_detail")
     private CompanyDetail companyDetail;
 
+    @Getter
+    @Setter
+    @ToString.Exclude
+    @OneToMany(mappedBy = "company", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST,
+            CascadeType.REFRESH})
+    private List<Property> properties;
+
+    public Company(String name, Integer value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    public void addProperty(Property property) {
+        if (properties == null) {
+            properties = new ArrayList<Property>();
+        }
+        properties.add(property);
+        property.setCompany(this);
+    }
 }

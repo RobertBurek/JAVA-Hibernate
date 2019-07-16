@@ -3,6 +3,7 @@ package entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -12,7 +13,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "company_detail")
-//@ToString
+@ToString
 @NoArgsConstructor
 //@AllArgsConstructor
 public class CompanyDetail {
@@ -36,16 +37,9 @@ public class CompanyDetail {
 
     @Getter
     @Setter
+    @ToString.Exclude
     @OneToOne(mappedBy = "companyDetail", cascade = CascadeType.ALL) //nazwa pola z class Company odpowiadające
     // za relację z class CompanyDetail
     private Company company;
 
-    @Override
-    public String toString() {
-        return "CompanyDetail{" +
-                "idCompanyDetail=" + idCompanyDetail +
-                ", residence='" + residence + '\'' +
-                ", employeeNumber=" + employeeNumber +
-                '}';
-    }
 }
