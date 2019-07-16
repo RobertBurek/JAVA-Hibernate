@@ -22,7 +22,6 @@ public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_property")
-
     private Integer idProperty;
 
     @Getter

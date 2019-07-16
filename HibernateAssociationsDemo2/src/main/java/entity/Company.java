@@ -46,8 +46,8 @@ public class Company {
 
     @Getter
     @Setter
-    @ToString.Exclude
-    @OneToMany(mappedBy = "company", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST,
+//    @ToString.Exclude
+    @OneToMany(mappedBy = "company", cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST,
             CascadeType.REFRESH})
     private List<Property> properties;
 
