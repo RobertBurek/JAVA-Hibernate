@@ -1,3 +1,5 @@
 #katalog z danymoi do kursu
 materialy_do_kursu/
 */.idea/workspace.xml
+target/
+.idea/
