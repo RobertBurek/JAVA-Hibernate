@@ -48,8 +48,8 @@ public class Company {
     @Setter
     @ToString.Exclude
     @OneToMany(mappedBy = "company",
-            fetch = FetchType.EAGER,    // wszystkie dane również powiązane pobierane są od razu
-//            fetch = FetchType.LAZY,  // pobiera powiązane dane dopiero gdy chcemy ich użyć
+            //           fetch = FetchType.EAGER,    // wszystkie dane również powiązane pobierane są od razu
+            fetch = FetchType.LAZY,  // pobiera powiązane dane dopiero gdy chcemy ich użyć
             cascade = {CascadeType.MERGE,
                     CascadeType.DETACH,
                     CascadeType.PERSIST,
