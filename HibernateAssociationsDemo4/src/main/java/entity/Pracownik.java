@@ -43,6 +43,12 @@ public class Pracownik {
     public Pracownik() {
     }
 
+    public Pracownik(String imie, String nazwisko, int pensja) {
+        this.imie=imie;
+        this.nazwisko=nazwisko;
+        this.pensja=pensja;
+    }
+
     public Integer getId_pracownik() {
         return id_pracownik;
     }
