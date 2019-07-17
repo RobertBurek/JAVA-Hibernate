@@ -1,6 +1,10 @@
 package entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Robert Burek
@@ -22,6 +26,19 @@ public class Pracownik {
 
     @Column(name = "pensja")
     private Integer pensja;
+
+    @Setter
+    @Getter
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH,
+                    CascadeType.MERGE,
+                    CascadeType.PERSIST,
+                    CascadeType.REFRESH})
+    @JoinTable(name = "pracownik_trening",
+            joinColumns = @JoinColumn(name = "id_pracownik"),
+            inverseJoinColumns = @JoinColumn(name = "id_trening"))
+    private List<Trening> treningi;
+
 
     public Pracownik() {
     }
