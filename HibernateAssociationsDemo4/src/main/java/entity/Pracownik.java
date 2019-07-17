@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -89,5 +90,12 @@ public class Pracownik {
                 ", nazwisko='" + nazwisko + '\'' +
                 ", pensja=" + pensja +
                 '}';
+    }
+
+    public void addTrening(Trening trening) {
+        if (treningi==null){
+            treningi=new ArrayList<Trening>();
+        }
+        treningi.add(trening);
     }
 }

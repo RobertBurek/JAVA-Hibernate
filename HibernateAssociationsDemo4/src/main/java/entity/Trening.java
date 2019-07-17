@@ -33,6 +33,7 @@ public class Trening {
 
     @Setter
     @Getter
+    @ToString.Exclude
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH,
                     CascadeType.MERGE,
